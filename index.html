@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(135deg, #fbd5f5, #ffddf4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .login-box {
+      background: rgba(255, 255, 255, 0.85); 
+      padding: 3rem 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      animation: fadeIn 0.6s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cat-icon {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      animation: bounce 1.5s infinite;
+    }
+
+    .cat-icon-img {
+      width: 60px;
+      height: auto;
+      margin-bottom: 1rem;
+      animation: bounce 1.5s infinite;
+    }
+
+
+    h2 {
+      font-size: 1.4rem;
+      color: #ff69b4 ;
+      margin-bottom: 1.5rem;
+    }
+
+    input[type="password"] {
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      width: 100%;
+      box-sizing: border-box;
+      outline: none;
+      transition: 0.2s border ease-in-out;
+    }
+
+    input[type="password"]:focus {
+      border-color: #ff69b4 ;
+    }
+
+    button {
+      margin-top: 1.5rem;
+      padding: 0.7rem 2rem;
+      font-size: 1rem;
+      background-color: #ffb6c1;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.2s background ease-in-out;
+    }
+
+    button:hover {
+      background-color: #cf6ba9  ;
+    }
+
+    .error {
+      color: #e53e3e;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .decor {
+      position: absolute;
+      width: 50px;
+      height: auto;
+      animation: floatDecor 4s ease-in-out infinite;
+      opacity: 0.8;
+      z-index: 0;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes floatDecor {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <img src="img/cat.png" alt="Cute Cat" class="cat-icon-img">
+    <h2>What's the name of the cat you introduced to me first?</h2>
+    <input type="password" id="password" placeholder="Enter Name">
+    <button onclick="checkPassword()">Enter</button>
+    <div class="error" id="errorMsg"></div>
+  </div>
+
+
+  <script>
+    function checkPassword() {
+      event.preventDefault();
+      const input = document.getElementById("password").value.toLowerCase();
+      if (input === "meimei") {
+        window.location.href = "home.html";
+      } else {
+        document.getElementById("errorMsg").textContent = "Incorrect password. Try again.";
+      }
+    }
+
+    // Floating PNG Decorations
+    const images = ["1.png", "2.png", "3.png"]; // Place these inside img/
+    const totalImages = 6;
+
+    for (let i = 0; i < totalImages; i++) {
+      const img = document.createElement("img");
+      img.src = "img/" + images[Math.floor(Math.random() * images.length)];
+      img.className = "decor";
+      img.style.top = Math.random() * 90 + "%";
+      img.style.left = Math.random() * 90 + "%";
+      img.style.transform = `rotate(${Math.random() * 360}deg) scale(${0.6 + Math.random() * 0.6})`;
+      document.body.appendChild(img);
+    }
+  </script>
+</body>
+</html>

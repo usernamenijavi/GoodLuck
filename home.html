@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Good Luck in Baguio!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(135deg, #ffe4e1, #ffddf4);
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .container {
+      background: white;
+      padding: 3rem 2.5rem;
+      border-radius: 25px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+      text-align: center;
+      animation: fadeIn 0.6s ease;
+      max-width: 500px;
+      z-index: 1;
+    }
+
+    .emoji {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      animation: float 2s ease-in-out infinite;
+    }
+
+    h1 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 3rem;
+      color: #ff69b4;
+      margin-bottom: 0.5rem;
+    }
+
+
+    p {
+      font-size: 1.2rem;
+      color: #4a5568;
+      margin: 0.8rem 0;
+    }
+
+    .decor {
+      position: absolute;
+      width: 50px;
+      height: auto;
+      animation: floatDecor 4s ease-in-out infinite;
+      z-index: 0;
+      opacity: 0.8;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes floatDecor {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Good Luck, Laica!</h1>
+    <p>Be well and Do well sa Baguio<br>Stay focused, believe in yourself, and take care</p>
+    <p>I’ll always be here to support you!<br>We'll have our time one day, for now focus up and go get that Liscence!</p>
+  </div>
+
+  <script>
+    const images = ["1.png", "2.png", "3.png"]; 
+    const totalImages = 6;
+
+    for (let i = 0; i < totalImages; i++) {
+      const img = document.createElement("img");
+      img.src = "img/" + images[Math.floor(Math.random() * images.length)];
+      img.className = "decor";
+      img.style.top = Math.random() * 90 + "%";
+      img.style.left = Math.random() * 90 + "%";
+      img.style.transform = `rotate(${Math.random() * 360}deg) scale(${0.6 + Math.random() * 0.6})`;
+      document.body.appendChild(img);
+    }
+  </script>
+</body>
+</html>
